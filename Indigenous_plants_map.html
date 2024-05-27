@@ -154,7 +154,7 @@
 
 
         ////// map /////////////////////////////////////////////////////////////
-        mapboxgl.accessToken = 'pk.eyJ1Ijoibm9ydG9uMjciLCJhIjoiY2xoam9hNHI5MGpuMjNscWtlcTF2dTN3dyJ9.xx0qCx-woV7mYFkrMNQmiA';
+        mapboxgl.accessToken = 'pk.eyJ1Ijoibm9ydG9uMjciLCJhIjoiY2xoam9hNHI5MGpuMjNscWtlcTF2dTN3dyJ9.xx0qCx-woV7mYFkrMNQmiA'; //change accesss token to Nch'kay lab
         const map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/norton27/clt6q7cpd00g601o8dhbr3nvw', //insert style here, here are some pre-set options https://docs.mapbox.com/api/maps/styles/
@@ -200,7 +200,7 @@
 
             map.addSource('plants_data', {
                 type: 'geojson',
-                data: 'https://raw.githubusercontent.com/cnorton27/Squamish_plants_map/main/withID.geojson' // Replace with the URL of your GeoJSON data
+                data: 'https://raw.githubusercontent.com/ITEX-sites/Squamish_plants_map/main/plant_species_cleaned.geojson' // Replace with the URL of your GeoJSON data
             });
 
             map.addLayer({
@@ -226,7 +226,7 @@
                 paint: {
                     'circle-color': '#11b4da',
                     'circle-radius': 6,
-                    'circle-opacity': 0
+                    'circle-opacity': 0 //invisible
                 }
             },
             );
