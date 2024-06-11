@@ -19,16 +19,16 @@ species_list = []
 gdfs = []
 # Iterate over each GeoJSON file and load it into GeoDataFrame
 for file in geojson_files:
-    feature_collection_name = os.path.splitext(os.path.basename(file))[0]
+    species = os.path.splitext(os.path.basename(file))[0]
     ID= 0
     species_count = 0
 
     gdf = gpd.read_file(file)
     gdf["ID"] = ID
     gdf["species_count"] = species_count
-    gdf['feature_collection_name'] = feature_collection_name
+    gdf['species'] = species
     ## adding all species names to a list for later
-    species_list.append(feature_collection_name)
+    species_list.append(species)
     print(species_list)
     
     # Append GeoDataFrame to list
@@ -70,7 +70,7 @@ gdf = gpd.read_file(r'C:\Users\ciara\OneDrive\Documents\GitHub\Exploratory-Lab-1
 def count_species(species, data):
     count = 0
     for index, row in data.iterrows():
-        if species == row['feature_collection_name']:
+        if species == row['species']:
             count = count + 1
     print(count)
     return(count)
@@ -78,7 +78,7 @@ def count_species(species, data):
 # adds count to new count column (righ tnow ID)
 for sp in species_list:
     for index, row in gdf.iterrows():
-        if sp == row['feature_collection_name']:
+        if sp == row['species']:
             sp_count = count_species(sp, gdf)
             gdf.loc[index, 'species_count'] = str(sp_count)
 
